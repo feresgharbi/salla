@@ -1,0 +1,24 @@
+{#
+RIHA hero — a rounded full-height stage with a floating glass card.
+| component.image        | string  | background photo                 |
+| component.eyebrow      | ?string | small line above the name        |
+| component.title        | ?string | big Latin name, e.g. RIHA        |
+| component.subtitle     | ?string | Arabic line under the name       |
+| component.button_text  | ?string |                                  |
+| component.button_url   | ?string | any store link                   |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-hero">
+  <div class="riha-hero__media">
+    {% if component.image %}
+      <img src="{{ component.image }}" alt="{{ component.title|default(store.name) }}" fetchpriority="high" loading="eager">
+    {% endif %}
+  </div>
+  <div class="riha-hero__card rv">
+    {% if component.eyebrow %}<span class="riha-eyebrow fade">{{ component.eyebrow }}</span>{% endif %}
+    {% if component.title %}<h2 class="riha-hero__name rise"><span>{{ component.title }}</span></h2>{% endif %}
+    {% if component.subtitle %}<p class="riha-hero__sub fade d1">{{ component.subtitle }}</p>{% endif %}
+    {% if component.button_text %}
+      <div class="fade d2"><a class="riha-btn" href="{{ component.button_url|default('#') }}">{{ component.button_text }}</a></div>
+    {% endif %}
+  </div>
+</section>

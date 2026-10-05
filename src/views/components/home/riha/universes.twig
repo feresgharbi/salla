@@ -1,0 +1,44 @@
+{#
+RIHA fragrance universes — one rounded panel per fragrance, image and text alternating.
+| component.items[].image     | string  | portrait photo (shown as an arch)        |
+| component.items[].eyebrow   | ?string | e.g. "N° 01 — Pour femme"                |
+| component.items[].name      | string  | Latin name, e.g. Auréa                   |
+| component.items[].name_ar   | ?string | Arabic name                              |
+| component.items[].story     | ?string |                                          |
+| component.items[].top       | ?string | top note                                 |
+| component.items[].heart     | ?string | heart note                               |
+| component.items[].base      | ?string | base note                                |
+| component.items[].price     | ?string | free text, e.g. "50 مل · 120.75 ر.س"     |
+| component.items[].button    | ?string | button label                             |
+| component.items[].url       | ?string | link, usually the product                |
+| component.items[].tint      | ?string | panel colour as hex, e.g. #FAF2E2         |
+#}
+<div component-id="{{ componentId }}" class="s-block riha-block riha-universes">
+  {% for item in component.items %}
+    {% set tint = (item.tint and item.tint matches '/^#[0-9a-fA-F]{3,8}$/') ? item.tint : '#FAF8F4' %}
+    <section class="riha-universe{{ loop.index is even ? ' is-flipped' : '' }}" style="--tint: {{ tint }}">
+      <div class="riha-universe__media">
+        {% if item.image %}
+          <div class="riha-frame reveal" data-parallax="60"><img src="{{ item.image }}" alt="{{ item.name }}" loading="lazy"></div>
+        {% endif %}
+      </div>
+      <div class="riha-universe__copy rv">
+        {% if item.eyebrow %}<span class="riha-eyebrow riha-universe__index fade">{{ item.eyebrow }}</span>{% endif %}
+        <h2 class="riha-universe__name rise"><span>{{ item.name }}</span></h2>
+        {% if item.name_ar %}<p class="riha-universe__ar fade d1">{{ item.name_ar }}</p>{% endif %}
+        {% if item.story %}<p class="riha-universe__story fade d2">{{ item.story }}</p>{% endif %}
+        {% if item.top or item.heart or item.base %}
+          <div class="riha-notes fade d3">
+            {% if item.top %}<div><small>{{ component.label_top|default('الافتتاحية') }}</small><b>{{ item.top }}</b></div>{% endif %}
+            {% if item.heart %}<div><small>{{ component.label_heart|default('القلب') }}</small><b>{{ item.heart }}</b></div>{% endif %}
+            {% if item.base %}<div><small>{{ component.label_base|default('القاعدة') }}</small><b>{{ item.base }}</b></div>{% endif %}
+          </div>
+        {% endif %}
+        <div class="riha-universe__buy fade d4">
+          {% if item.button and item.url %}<a class="riha-btn" href="{{ item.url }}">{{ item.button }}</a>{% endif %}
+          {% if item.price %}<span class="riha-universe__price">{{ item.price }}</span>{% endif %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+</div>

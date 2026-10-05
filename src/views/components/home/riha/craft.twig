@@ -1,0 +1,21 @@
+{#
+RIHA craft — three arched images with a title and short text each.
+| component.title                                   |
+| component.items[].image, .title, .text            |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-craft">
+  <div class="container">
+    {% if component.title %}
+      <div class="riha-head rv"><div class="riha-orn" aria-hidden="true"><i></i></div><h2 class="fade">{{ component.title }}</h2></div>
+    {% endif %}
+    <div class="riha-craft__grid">
+      {% for item in component.items %}
+        <article class="rv">
+          {% if item.image %}<div class="riha-frame reveal"><img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy"></div>{% endif %}
+          {% if item.title %}<h3 class="fade">{{ item.title }}</h3>{% endif %}
+          {% if item.text %}<p class="fade d1">{{ item.text }}</p>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

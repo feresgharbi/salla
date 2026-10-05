@@ -1,0 +1,17 @@
+{#
+RIHA services — soft tiles with an icon, title and one line.
+| component.items[].icon (Salla icon class), .title, .text |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-services">
+  <div class="container">
+    <div class="riha-services__grid">
+      {% for item in component.items %}
+        <div>
+          {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+          <h3>{{ item.title }}</h3>
+          {% if item.text %}<p>{{ item.text }}</p>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

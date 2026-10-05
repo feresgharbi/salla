@@ -1,0 +1,83 @@
+{#
+| Variable         | Type    | Description                     |
+|------------------|---------|---------------------------------|
+| cart             | object  |                                 |
+| cart.items_count | int     |                                 |
+| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
+
+RIHA header: a thin announcement line, then a floating "capsule" bar
+with the menu on one side, the logo in the centre and the tools on the other.
+The ids/classes #mainnav, .inner, .container and .flex are kept because
+the starter's sticky-header and menu-overflow scripts rely on them.
+#}
+{% set announcement = theme.settings.get('riha_announcement') %}
+{% set text_logo = theme.settings.get('riha_text_logo', true) %}
+<header data-testid="store-header" class="store-header riha-header">
+  <div class="lg:hidden">
+    <salla-bullet-delivery-tag></salla-bullet-delivery-tag>
+  </div>
+
+  {% if announcement %}
+    <div class="riha-notice">{{ announcement }}</div>
+  {% endif %}
+
+  {# Language / currency / branches stay available in a slim top row when the store uses them #}
+  {% if store.settings.is_multilingual or store.settings.currencies_enabled or store.scope %}
+    <div class="riha-topbar">
+      <div class="container flex items-center justify-center gap-3">
+        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+          <div class="header-buttons">
+            <salla-localization-modal data-testid="store-header-localization" show-trigger></salla-localization-modal>
+          </div>
+        {% endif %}
+        {% if store.scope %}
+          <button class="riha-chip-btn" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+            <i class="sicon-location"></i> {{ store.scope.name }}
+          </button>
+        {% endif %}
+        <div class="hidden lg:block"><salla-bullet-delivery-tag></salla-bullet-delivery-tag></div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div id="mainnav" class="main-nav-container riha-mainnav">
+    <div class="inner">
+      <div class="container">
+        <div class="flex riha-bar">
+          <div class="riha-bar__menu">
+            <a data-testid="store-header-mobile-toggle" class="lg:hidden mburger mburger--collapse riha-icon-btn" href="#mobile-menu" aria-label="{{ trans('blocks.header.main_menu') }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>
+            </a>
+            <custom-main-menu></custom-main-menu>
+          </div>
+
+          <a data-testid="store-header-logo" class="navbar-brand riha-logo" href="{{ store.url }}" aria-label="{{ store.name }}">
+            {% if text_logo %}
+              <b>{{ theme.settings.get('riha_logo_text', 'RIHA') }}</b>
+              {% if theme.settings.get('riha_logo_tagline', 'Maison de parfum') %}
+                <small>{{ theme.settings.get('riha_logo_tagline', 'Maison de parfum') }}</small>
+              {% endif %}
+            {% else %}
+              <img fetchpriority="high" loading="eager" src="{{ store.logo|cdn(240) }}" alt="{{ store.name }}">
+            {% endif %}
+            {% if is_page('index') %}
+              <h1 class="sr-only">{{ store.name }}</h1>
+            {% else %}
+              <span class="sr-only">{{ store.name }}</span>
+            {% endif %}
+          </a>
+
+          <div class="riha-bar__tools">
+            <button class="riha-icon-btn" type="button" data-riha-search aria-label="{{ trans('common.elements.search') }}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+            </button>
+            <salla-user-menu data-testid="store-header-user-menu" class="riha-user" avatar-only show-header show-trigger></salla-user-menu>
+            <salla-cart-summary data-testid="store-header-cart" class="riha-cart">
+              <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
+            </salla-cart-summary>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

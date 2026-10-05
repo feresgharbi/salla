@@ -1,0 +1,22 @@
+{#
+RIHA discovery box — image beside a warm panel with chips and a button.
+| component.image, component.title, component.text      |
+| component.chips[].name                                 |
+| component.button_text, component.button_url            |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-discovery">
+  <div class="riha-discovery__media">
+    {% if component.image %}<div class="riha-frame reveal"><img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy"></div>{% endif %}
+  </div>
+  <div class="riha-discovery__copy rv">
+    <div class="riha-orn" aria-hidden="true"><i></i></div>
+    {% if component.title %}<h2 class="fade">{{ component.title }}</h2>{% endif %}
+    {% if component.text %}<p class="fade d1">{{ component.text }}</p>{% endif %}
+    {% if component.chips|length %}
+      <div class="riha-chips fade d2">{% for c in component.chips %}<span>{{ c.name }}</span>{% endfor %}</div>
+    {% endif %}
+    {% if component.button_text and component.button_url %}
+      <div class="fade d3"><a class="riha-btn" href="{{ component.button_url }}">{{ component.button_text }}</a></div>
+    {% endif %}
+  </div>
+</section>

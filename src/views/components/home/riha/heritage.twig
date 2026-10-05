@@ -1,0 +1,23 @@
+{#
+RIHA heritage — parallax photo with a glass card, two dates and a link.
+| component.image, component.title, component.text           |
+| component.year_1, component.place_1, component.year_2, component.place_2 |
+| component.link_text, component.link_url                    |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-heritage">
+  {% if component.image %}
+    <div class="riha-heritage__media" data-parallax="90"><img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy"></div>
+  {% endif %}
+  <div class="riha-heritage__card rv">
+    <div class="riha-orn" aria-hidden="true"><i></i></div>
+    {% if component.title %}<h2 class="fade">{{ component.title }}</h2>{% endif %}
+    {% if component.year_1 or component.year_2 %}
+      <div class="riha-dates fade d1">
+        {% if component.year_1 %}<div><b>{{ component.year_1 }}</b><span>{{ component.place_1 }}</span></div>{% endif %}
+        {% if component.year_2 %}<div><b>{{ component.year_2 }}</b><span>{{ component.place_2 }}</span></div>{% endif %}
+      </div>
+    {% endif %}
+    {% if component.text %}<p class="fade d2">{{ component.text }}</p>{% endif %}
+    {% if component.link_text and component.link_url %}<a class="riha-link fade d3" href="{{ component.link_url }}">{{ component.link_text }}</a>{% endif %}
+  </div>
+</section>

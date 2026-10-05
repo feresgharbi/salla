@@ -1,0 +1,13 @@
+{#
+RIHA names marquee — fragrance names scrolling slowly across the page.
+| component.names[].name | string |
+#}
+{% if component.names|length %}
+<div component-id="{{ componentId }}" class="s-block riha-block riha-names" aria-hidden="true">
+  <div class="riha-names__track">
+    {% for round in 1..2 %}
+      {% for n in component.names %}<span>{{ n.name }}</span><i>✦</i>{% endfor %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

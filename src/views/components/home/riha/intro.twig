@@ -1,0 +1,10 @@
+{#
+RIHA intro — one large centred sentence with a gold ornament.
+| component.text       | string  |
+| component.signature  | ?string | small Latin line under the text |
+#}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-intro rv">
+  <div class="riha-orn" aria-hidden="true"><i></i></div>
+  {% if component.text %}<p class="fade">{{ component.text }}</p>{% endif %}
+  {% if component.signature %}<small class="fade d1">{{ component.signature }}</small>{% endif %}
+</section>

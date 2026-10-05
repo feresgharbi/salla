@@ -1,0 +1,41 @@
+{#
+| Variable     | Type                  | Description |
+|--------------|-----------------------|-------------|
+| page         | Page                  |             |
+| page.title   | string                |             |
+| page.content | string                |             |
+| page.url     | string                |             |
+| page.slug    | string                |             |
+| page.type    | string                |             |
+#}
+{% extends "layouts.master" %}
+{% block content %}
+    {% if page.type == 'customised' %}
+      {#
+          Hook: information_page.information_page
+          Fires before the main informative page content section.
+          Use this hook to inject custom content or components above the page content area.
+      #}
+      <div class="s-blocks-wrapper s-information-page !mt-0">{% hook 'information_page.information_page' %}</div>
+    {% else %}
+      <div class="container">
+          {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
+          <nav class="breadcrumbs w-full py-5">
+              <salla-breadcrumb></salla-breadcrumb>
+          </nav>
+
+          <div class="riha-page-hero rv">
+              <div class="riha-orn" aria-hidden="true"><i></i></div>
+              <h1 class="riha-page-hero__title fade">{{ page.title }}</h1>
+          </div>
+          <div class="flex justify-center">
+              <div class="content content--single-page riha-long w-full lg:w-8/12">
+                  <div class="content-entry">
+                      {{ page.content|raw }}
+                  </div>
+                  <salla-comments data-testid="store-page-comments" item-id="{{page.id}}" type="page"></salla-comments>
+              </div>
+          </div>
+      </div>
+    {% endif %}
+{% endblock %}

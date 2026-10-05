@@ -1,0 +1,34 @@
+{#
+RIHA collection — section heading and a product slider fed by the store.
+| component.title          | ?string |                                              |
+| component.description    | ?string |                                              |
+| component.products       | array   | selected products (optional)                 |
+| component.category       | array   | or a category (used when no products picked) |
+| component.link_text      | ?string |                                              |
+| component.link_url       | ?string |                                              |
+#}
+{% set cat = component.category|first %}
+<section component-id="{{ componentId }}" class="s-block riha-block riha-collection">
+  <div class="riha-head rv">
+    <div class="riha-orn" aria-hidden="true"><i></i></div>
+    {% if component.title %}<h2 class="fade">{{ component.title }}</h2>{% endif %}
+    {% if component.description %}<p class="fade d1">{{ component.description }}</p>{% endif %}
+  </div>
+  <div class="container riha-rail">
+    <salla-products-slider
+      {% if component.products|length %}
+        source="selected"
+        source-value="[{{ component.products|map((product) => product.id)|join(',') }}]"
+      {% elseif cat %}
+        source="categories"
+        source-value="[{{ cat.id }}]"
+      {% else %}
+        source="latest"
+      {% endif %}
+      block-title=" "
+      slider-id="riha-collection-{{ position }}"></salla-products-slider>
+  </div>
+  {% if component.link_text and component.link_url %}
+    <p class="riha-collection__more"><a class="riha-link" href="{{ component.link_url }}">{{ component.link_text }}</a></p>
+  {% endif %}
+</section>
