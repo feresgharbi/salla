@@ -3,7 +3,8 @@
     "ar": "ريحا",
     "en": "RIHA Maison"
   },
-  "repository": "",
+  "repository": "https://github.com/riha-maison/theme-riha",
+  "author_email": "feresgharbi80@gmail.com",
   "features": [
     "mega-menu",
     "fonts",
@@ -79,8 +80,7 @@
       "description": "اتركه فارغًا لإخفاء الشريط",
       "placeholder": null,
       "minLength": 0,
-      "maxLength": 160,
-      "multilanguage": true
+      "maxLength": 160
     },
     {
       "type": "boolean",
@@ -126,8 +126,7 @@
       "description": null,
       "placeholder": null,
       "minLength": 0,
-      "maxLength": 200,
-      "multilanguage": true
+      "maxLength": 200
     },
     {
       "type": "static",
@@ -147,8 +146,7 @@
       "description": null,
       "placeholder": null,
       "minLength": 0,
-      "maxLength": 300,
-      "multilanguage": true
+      "maxLength": 300
     },
     {
       "type": "string",
@@ -161,8 +159,7 @@
       "description": null,
       "placeholder": null,
       "minLength": 0,
-      "maxLength": 300,
-      "multilanguage": true
+      "maxLength": 300
     },
     {
       "type": "string",
@@ -175,8 +172,7 @@
       "description": null,
       "placeholder": null,
       "minLength": 0,
-      "maxLength": 300,
-      "multilanguage": true
+      "maxLength": 300
     },
     {
       "type": "static",
@@ -449,6 +445,7 @@
       },
       "icon": "sicon-image",
       "path": "home.riha.hero",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -588,6 +585,7 @@
       },
       "icon": "sicon-typography",
       "path": "home.riha.intro",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -628,6 +626,7 @@
       },
       "icon": "sicon-layout-grid-rearrange",
       "path": "home.riha.universes",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -957,6 +956,7 @@
       },
       "icon": "sicon-list",
       "path": "home.riha.names",
+      "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -1020,6 +1020,7 @@
       },
       "icon": "sicon-box-bankers",
       "path": "home.riha.collection",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -1166,6 +1167,7 @@
       },
       "icon": "sicon-calendar",
       "path": "home.riha.heritage",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -1339,6 +1341,7 @@
       },
       "icon": "sicon-star2",
       "path": "home.riha.craft",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -1433,6 +1436,7 @@
       },
       "icon": "sicon-gift-sharing",
       "path": "home.riha.discovery",
+      "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -1478,7 +1482,7 @@
           "id": "chips",
           "type": "collection",
           "format": "collection",
-          "required": true,
+          "required": false,
           "minLength": 0,
           "maxLength": 10,
           "label": "أسماء صغيرة",
@@ -1594,6 +1598,7 @@
       },
       "icon": "sicon-award-ribbon",
       "path": "home.riha.services",
+      "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1",
       "is_default": true,
       "fields": [
         {
@@ -2043,6 +2048,7 @@
       "icon": "sicon-list-play",
       "path": "home.slider-products-with-header",
       "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
+      "is_default": false,
       "fields": [
         {
           "type": "static",
@@ -2180,8 +2186,7 @@
             }
           ]
         }
-      ],
-      "is_default": false
+      ]
     },
     {
       "key": "b89edc4a-ce0b-468f-8323-2da48147bb32",
@@ -2374,6 +2379,7 @@
       "icon": "sicon-award-ribbon",
       "path": "home.brands",
       "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
+      "is_default": false,
       "fields": [
         {
           "type": "static",
@@ -2409,8 +2415,7 @@
           "searchable": true,
           "source": "brands"
         }
-      ],
-      "is_default": false
+      ]
     },
     {
       "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",
@@ -2530,7 +2535,7 @@
       ]
     }
   ],
-  "support_url": "https://salla.com/",
+  "support_url": "https://riha.sa",
   "description": {
     "ar": "ثيم دار عطور فاخر: أبيض وذهبي، قصة لكل عطر، وحركة هادئة عند التمرير.",
     "en": "A luxury perfume-house theme: white and gold, a story for every fragrance, and calm scroll motion."
