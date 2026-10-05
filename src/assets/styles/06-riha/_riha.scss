@@ -372,3 +372,10 @@ body.riha-header-hidden .riha-mainnav { transform: translateY(-160%); }
 .theme-riha .riha-pdp .text-red-800,
 .theme-riha .s-product-card-sale-price h4 { color: var(--riha-ink) !important; font-family: var(--riha-f-num); font-weight: 400; }
 .theme-riha .riha-pdp .line-through, .theme-riha .riha-pdp .before-price { color: var(--riha-grey); font-family: var(--riha-f-num); }
+
+/* ---------- 13. Newsletter line in the footer ---------- */
+.riha-news { display: flex; align-items: center; max-width: 420px; margin: 26px auto 0; padding: 4px 6px 4px 22px; border: 1px solid rgba(27,26,24,.25); border-radius: 999px; background: #fff; }
+[dir="rtl"] .riha-news { padding: 4px 22px 4px 6px; }
+.riha-news input { flex: 1; border: 0; background: none; font: inherit; padding: 10px 0; outline: none; box-shadow: none; }
+.riha-news input:focus { box-shadow: none; }
+.riha-news button { background: var(--riha-ink); color: #fff; border-radius: 999px; padding: 8px 22px; font-size: 14px; }

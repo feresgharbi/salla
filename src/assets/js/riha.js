@@ -110,9 +110,21 @@
     box.hidden = false;
   }
 
+  /* ---------- footer newsletter: thank-you message (connect a mailing app to collect emails) ---------- */
+  function news() {
+    doc.addEventListener('submit', e => {
+      const f = e.target.closest('[data-riha-news]');
+      if (!f) return;
+      e.preventDefault();
+      f.reset();
+      const msg = 'تم تسجيلك، أهلًا بك في عالم ريحا';
+      if (window.salla && salla.notify) salla.notify.success(msg); else alert(msg);
+    });
+  }
+
   function start() {
     body.classList.add('riha-ready');
-    reveals(); parallax(); autohide(); search(); pyramid();
+    reveals(); parallax(); autohide(); search(); pyramid(); news();
     // sections rendered later by Salla components (sliders, lists) get revealed too
     if ('MutationObserver' in window && motion) {
       let t;

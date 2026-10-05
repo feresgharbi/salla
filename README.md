@@ -31,7 +31,9 @@ salla login
 salla theme preview      # builds and opens the theme on your demo store with live reload
 ```
 
-To publish: push the folder to a GitHub repo, then `salla theme push` (or connect the repo in Salla Partners → Themes). Run `pnpm run production` first if your workflow needs the built `public/` folder.
+The `public/` folder is already built and included, so the theme works as soon as it's pushed. Push the folder to a GitHub repo, then `salla theme push` (or connect the repo in Salla Partners → Themes). If you change files in `src/`, rebuild with `pnpm run production` before pushing.
+
+**Homepage:** by default it shows the full RIHA page with all the original text. To edit sections one by one in the theme editor, turn on "تعديل أقسام الرئيسية من محرر القالب" in theme settings. Paste your story page and discovery box links in the settings too.
 
 ## Homepage sections (theme editor → Home)
 

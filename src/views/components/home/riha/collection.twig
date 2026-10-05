@@ -8,7 +8,7 @@ RIHA collection — section heading and a product slider fed by the store.
 | component.link_url       | ?string |                                              |
 #}
 {% set cat = component.category|first %}
-<section component-id="{{ componentId }}" class="s-block riha-block riha-collection">
+<section id="collection" component-id="{{ componentId }}" class="s-block riha-block riha-collection">
   <div class="riha-head rv">
     <div class="riha-orn" aria-hidden="true"><i></i></div>
     {% if component.title %}<h2 class="fade">{{ component.title }}</h2>{% endif %}

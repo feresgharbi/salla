@@ -7,7 +7,11 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
-    {% component home %}
+    {% if theme.settings.get('riha_editable_home', false) %}
+        {% component home %}
+    {% else %}
+        {% include 'components.home.riha.full-home' %}
+    {% endif %}
 {% endblock %}
 {% block scripts %}
     <script defer src="{{ 'home.js' | asset }}"></script>

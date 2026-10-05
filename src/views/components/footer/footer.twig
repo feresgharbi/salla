@@ -24,6 +24,10 @@ is still rendered by Salla's own components, so it stays in sync with the dashbo
       {% elseif store.description %}
         <div class="riha-footer__desc">{{ store.description|raw }}</div>
       {% endif %}
+      <form class="riha-news" data-riha-news>
+        <input type="email" required placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني">
+        <button type="submit">اشترك</button>
+      </form>
       <salla-social data-testid="store-footer-social" class="riha-footer__social"></salla-social>
     </div>
 
